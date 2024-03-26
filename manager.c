@@ -99,19 +99,19 @@ void switching(struct Book* books, int* count) {
 
     printf("\nEnter a number -->");
     int choice;
-    scanf("%lf", choice);
+    scanf("%lf", &choice);
 
     switch (choice) {
-        case '1':
+        case 1:
             add(books, count);
             break;
-        case '2':
+        case 2:
             printAll(books, *count);
             break;
-        case '3':
+        case 3:
             search(books,*count);
             break;
-        case '4':
+        case 4:
             exit(0);
         default:
             printf("Please enter a valid number in the next attempt");
