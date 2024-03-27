@@ -1,19 +1,4 @@
 /******************************************************************************
-
-RAM/Memory
------------- 
-Index/address   -> value
-
-0XFF01A     -> book
-0XFF01A + 1 -> book
-0XFF01A + 2 -> ...
-0XFF01A + 3 -> 0
-0XFF01A + 4 -> ...
-0XFF01A + 5 -> 0XFF01A (this memoery is pointing to a Book struct or Int)
-
-
-pBook = 0XFF01A + 5 - is the pointer to Book
-
 When running a binary any OS will reserve 4 segments for your application in memory
 
 1- Code segment /text 
