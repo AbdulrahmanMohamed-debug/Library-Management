@@ -1,3 +1,29 @@
+/******************************************************************************
+
+RAM/Memory
+------------ 
+Index/address   -> value
+
+0XFF01A     -> book
+0XFF01A + 1 -> book
+0XFF01A + 2 -> ...
+0XFF01A + 3 -> 0
+0XFF01A + 4 -> ...
+0XFF01A + 5 -> 0XFF01A (this memoery is pointing to a Book struct or Int)
+
+
+pBook = 0XFF01A + 5 - is the pointer to Book
+
+When running a binary any OS will reserve 4 segments for your application in memory
+
+1- Code segment /text 
+2- Stack
+3- Heap
+4- Data/constants
+
+*******************************************************************************/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -19,7 +45,7 @@ int main() {
     int count = 0;
 
     struct Book *books = (struct Book *) malloc(100 * sizeof(struct Book));
-    add(books, &count);
+    //add(books, &count);
     //printAll(books, count);
 
     while(1==1) {
@@ -36,10 +62,12 @@ void add(struct Book* books, int* num) {
 
     printf("\n\t\t########### Add new book! ###########\t\t\n");
     printf("\nBook title -->\t");
-    gets(pointer_to_current_book->name);
-//    printf("\n%s\n",current_book->name);
+
+    //while ((getchar()) == "\n");
+    fgets(pointer_to_current_book->name, 64, stdin);
+
     printf("\nBook Author -->\t");
-    gets(pointer_to_current_book->author);
+    fgets(pointer_to_current_book->author, 64, stdin);
     pointer_to_current_book->library_num = *num + 1;
     *num = *num +1;
 
@@ -99,8 +127,8 @@ void switching(struct Book* books, int* count) {
 
     printf("\nEnter a number -->");
     int choice;
-    scanf("%lf", &choice);
-
+    scanf("%d", &choice);
+    getchar();
     switch (choice) {
         case 1:
             add(books, count);
